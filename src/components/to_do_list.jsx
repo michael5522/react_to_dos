@@ -19,22 +19,42 @@ const toDos = [
         title: 'wash pizza'
     }
 ]
-function ToDoList(props){
-    const toDoElements = toDos.map ((item)=>{
-        return <ListItem key={item.id} title={item.title} />
-    });
+// function ToDoList(props){
+//     const toDoElements = toDos.map ((item)=>{
+//         return <ListItem key={item.id} title={item.title} />
+//     });
 
-    // const toDoElements = [
-    //     <listItem />
-    //     <listItem />
-    //     <listItem />
-    //     <listItem />
-    // ]
-    return (
-        <ol>
-            {toDoElements}
-        </ol>
-    );
+//     // const toDoElements = [
+//     //     <listItem />
+//     //     <listItem />
+//     //     <listItem />
+//     //     <listItem />
+//     // ]
+//     return (
+//         <ol>
+//             {toDoElements}
+//         </ol>
+//     );
+// }
+
+class ToDoList extends React.Component {
+    constructor(props){
+        super(props);
+        
+        this.state = {
+            list: []
+        };
+    }
+    render(){
+        const toDoElements = toDos.map ((item)=>{
+            return <ListItem key={item.id} title={item.title} />
+        });
+        return (
+            <ol>
+                {toDoElements}
+            </ol>
+        );
+    }
 }
 
 export default ToDoList;

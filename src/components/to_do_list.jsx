@@ -24,7 +24,7 @@ function ToDoList(props){
         return <ListItem key={item._id} title={item.title} />
     });
     return (
-        <ol>
+        <ol className="list-group">
             {toDoElements}
         </ol>
     );

@@ -25,7 +25,7 @@ import AddToDoForm from './add_to_do_form';
 class App extends React.Component{
     constructor(props){
         super(props);
-        
+
         this.state = {
             list: []
         };
@@ -98,11 +98,18 @@ class App extends React.Component{
     render(){
         const {list } = this.state;
         return(
-            <div>
-            <h1>To Do List</h1>
-            <ToDoList list={list} />
+
+            <div className="container-fluid">
+            <h1 className="text-center my-4">To Do List</h1>
+            <div className="row">
+            <div className="col-md-8">
+                    <ToDoList list={list} />
+            </div>
+           <div className="col-md-4">
             {/* <Button/> */}
             <AddToDoForm add={this.addToDo}/>
+                </div>
+             </div>
             </div>
         );
     }

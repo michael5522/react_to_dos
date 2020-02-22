@@ -38,21 +38,21 @@ class AddToDoForm extends React.Component{
         console.log("title:",this.state.title);
         console.log("desc:",this.state.description);
         return(
-            <form onSubmit={this.handleSubmit}> 
-                <h1>Add To Do</h1>
-                <div>
+            <form onSubmit={this.handleSubmit}>
+                {/* <h1>Add To Do</h1> */}
+                <div className="form-group">
                     <label htmlFor="title">Title: </label>
-                    <input value={title} name="title" onChange={this.handleChange}type="text" id="title" />
+                    <input className="form-control" value={title} name="title" onChange={this.handleChange}type="text" id="title" />
                 </div>
 
-                <div>
+                <div className="form-group">
                     <label htmlFor="description">Description: </label>
-                    <input value={details} name="details" onChange={this.handleChange} type="text" id="description" />
+                    <input className="form-control" value={details} name="details" onChange={this.handleChange} type="text" id="description" />
                 </div>
 
-                <div>
-                    <button type="submit" > Add To Do</button>
-                    <button onClick={this.reset} type="button"> Reset</button>
+                <div className="text-right">
+                    <button type="submit" className="btn btn-outline-success mr-2"> Add To Do</button>
+                    <button className="btn btn-outline-danger" onClick={this.reset} type="button"> Reset</button>
                 </div>
             </form>
         );

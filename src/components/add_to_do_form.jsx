@@ -1,10 +1,10 @@
 import React from 'react';
 
-class AddToDo extends React.Component{
+class AddToDoForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            description: '',
+            details: '',
             title: ''
         }
         this.handleChange=this.handleChange.bind(this);
@@ -21,16 +21,20 @@ class AddToDo extends React.Component{
     handleSubmit(event){
         event.preventDefault();
         console.log('form values',this.state)
+
+        this.props.add({ ...this.state });
+
+        this.reset();
     }
 
     reset(){
         this.setState({
-            description: '',
+            details: '',
             title: ''
         })
     }
     render(){
-        const{ description, title} = this.state;
+        const{ details, title} = this.state;
         console.log("title:",this.state.title);
         console.log("desc:",this.state.description);
         return(
@@ -43,7 +47,7 @@ class AddToDo extends React.Component{
 
                 <div>
                     <label htmlFor="description">Description: </label>
-                    <input value={description} name="description" onChange={this.handleChange} type="text" id="description" />
+                    <input value={details} name="details" onChange={this.handleChange} type="text" id="description" />
                 </div>
 
                 <div>
@@ -55,4 +59,4 @@ class AddToDo extends React.Component{
     }
 }
 
-export default AddToDo;
+export default AddToDoForm;

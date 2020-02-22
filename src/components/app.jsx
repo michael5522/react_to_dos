@@ -2,6 +2,7 @@ import React from 'react';
 import ToDoList from './to_do_list';
 import Button from './button';
 import AddToDoForm from './add_to_do_form';
+import {ListContext} from '../list_context';
 
 // const toDos = [
 //     {
@@ -25,12 +26,14 @@ import AddToDoForm from './add_to_do_form';
 class App extends React.Component{
     constructor(props){
         super(props);
-        
+
         this.state = {
-            list: []
+            addItem: (item)=> this.addToDo(item),
+            list: [],
+            error:''
         };
 
-        this.addToDo = this.addToDo.bind(this);
+
     }
 
     componentDidMount(){
@@ -96,14 +99,23 @@ class App extends React.Component{
     }
 
     render(){
-        const {list } = this.state;
+        // const {list } = this.state;
         return(
-            <div>
-            <h1>To Do List</h1>
-            <ToDoList list={list} />
-            {/* <Button/> */}
-            <AddToDoForm add={this.addToDo}/>
-            </div>
+
+            <ListContext.Provider value={this.state}>
+                <div className="container">
+                    <h1 className="text-center my-4">To Do List</h1>
+                    <div className="row">
+                        <div className="col-md-8">
+                            <ToDoList  />
+                        </div>
+                        <div className="col-md-4">
+                            {/* <Button/> */}
+                            <AddToDoForm  />
+                        </div>
+                    </div>
+                </div>
+            </ListContext.Provider>
         );
     }
 }

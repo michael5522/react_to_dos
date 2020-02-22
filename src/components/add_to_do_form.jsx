@@ -1,4 +1,5 @@
 import React from 'react';
+import {ListContext} from '../list_context';
 
 class AddToDoForm extends React.Component{
     constructor(props){
@@ -20,9 +21,9 @@ class AddToDoForm extends React.Component{
     }
     handleSubmit(event){
         event.preventDefault();
-        console.log('form values',this.state)
+        // console.log('form values',this.state)
 
-        this.props.add({ ...this.state });
+        this.context.addItem({ ...this.state });
 
         this.reset();
     }
@@ -35,8 +36,9 @@ class AddToDoForm extends React.Component{
     }
     render(){
         const{ details, title} = this.state;
-        console.log("title:",this.state.title);
-        console.log("desc:",this.state.description);
+        // console.log("title:",this.state.title);
+        // console.log("desc:",this.state.description);
+        console.log('form context', this.context);
         return(
             <form onSubmit={this.handleSubmit}>
                 {/* <h1>Add To Do</h1> */}
@@ -58,5 +60,5 @@ class AddToDoForm extends React.Component{
         );
     }
 }
-
+AddToDoForm.contextType = ListContext;
 export default AddToDoForm;
